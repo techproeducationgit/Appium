@@ -47,7 +47,7 @@ public class Appium04 {
         String actualText = driver.findElementByXPath("//android.widget.TextView[@text='test']").getText();
         Assert.assertEquals(actualText,expectedText);
 
-        //21:10 bulusma
+
 
 
 
