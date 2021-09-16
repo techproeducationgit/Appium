@@ -12,6 +12,10 @@ import java.net.URL;
 public class Appium08UiAutomatorviewer {
     @Test
     public void test() throws InterruptedException, MalformedURLException {
+        /*
+        UiAutomatorviewer ornegi
+         */
+
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
