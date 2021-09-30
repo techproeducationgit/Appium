@@ -9,13 +9,9 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Appium08UiAutomatorviewer {
+public class Appium08UiAutomatorViewer {
     @Test
     public void test() throws InterruptedException, MalformedURLException {
-        /*
-        UiAutomatorviewer ornegi
-         */
-
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
@@ -30,9 +26,8 @@ public class Appium08UiAutomatorviewer {
 
         Thread.sleep(4000);
 
-        driver.findElementByXPath("//android.widget.Button[@test='4']").click();
-        driver.findElementByXPath("//android.widget.Button[@test='4']").click();
-        driver.findElementByXPath("//android.widget.Button[@test='4']").click();
-
+       driver.findElementByXPath("//android.widget.Button[@text='4']").click();
+        driver.findElementByXPath("//android.widget.Button[@text='4']").click();
+        driver.findElementByXPath("//android.widget.Button[@text='4']").click();
     }
 }
