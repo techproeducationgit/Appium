@@ -1,8 +1,12 @@
 package EcommerceApp;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.touch.LongPressOptions;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,8 +14,9 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.Set;
 
-public class ECommerce04FiyatiOnayla {
+public class ECommerce05MobileGestures {
 
      @Test
      public void test() throws MalformedURLException, InterruptedException {
@@ -106,6 +111,48 @@ public class ECommerce04FiyatiOnayla {
         String actualTotal = driver.findElementById("com.androidsample.generalstore:id/totalAmountLbl").getText();
 
         Assert.assertEquals(actualTotal,expectedTotal1);
+//5-Validate Mobile gestures working for link (long press) and navigate to WebView
+
+       MobileElement checkBox = driver.findElementByClassName("android.widget.CheckBox");
+
+       MobileElement termsOfCondButton = driver.findElementById("com.androidsample.generalstore:id/termsButton");
+
+       MobileElement visitWebsiteButton = driver.findElementById("com.androidsample.generalstore:id/btnProceed");
+       //mobile gesture kullanacagiz bunun icin TouchAction class kullaniyoruz
+         TouchAction touchAction = new TouchAction(driver);
+         //tap
+         touchAction.tap(TapOptions.tapOptions().withElement(ElementOption.element(checkBox))).perform();
+         //long press
+         touchAction.longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(termsOfCondButton))).release().perform();
+         //popup onaylama
+         MobileElement popUpTitle = driver.findElementById("com.androidsample.generalstore:id/alertTitle");
+
+         MobileElement closeButton = driver.findElementById("android:id/button1");
+         Assert.assertTrue(popUpTitle.isDisplayed());
+         //close butonuna bas
+         touchAction.tap(TapOptions.tapOptions().withElement(ElementOption.element(closeButton))).perform();
+         System.out.println("visit website butonuna basmadan once "+driver.getContext());
+         //website git
+         touchAction.tap(TapOptions.tapOptions().withElement(ElementOption.element(visitWebsiteButton))).perform();
+         Thread.sleep(5000);
+         Set contextNames = driver.getContextHandles();
+         //burda mevcut app tururnu(context) bir bir yazdiriyoruz
+         for (Object contextName : contextNames) {
+             System.out.println(contextName);//NATIVE_APP   CHROMIUM
+             Thread.sleep(3000);
+             if (contextName.toString().contains("CHROMIUM")){
+                 //alttaki kodda hangi app turunde calisacaksak onu set ediyoruz
+                 // driver.context((String) contextName);//WEBAPP DEVAM EDECEGIM
+                 Thread.sleep(10000);
+             }
+         }
+
+         System.out.println("web siteye git butonuna bastiktan sonra "+driver.getContext());
+
+
+
+
+
 
 
      }
