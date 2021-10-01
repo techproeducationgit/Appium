@@ -45,7 +45,7 @@ public class ECommerce03SepeteEkle {
 //product title basrasili girsi sonrasi onayliyalim
          Assert.assertTrue(driver.findElementById("com.androidsample.generalstore:id/toolbar_title").isDisplayed());
 
-<<<<<<< HEAD
+
         //3-Validate if the items selected in the page 2 are matching with the items displayed in check out page
 
          driver.findElementByXPath("(//android.widget.TextView[@text='ADD TO CART'])[1]").click();
@@ -53,7 +53,7 @@ public class ECommerce03SepeteEkle {
          driver.findElementByXPath("(//android.widget.TextView[@text='ADD TO CART'])[1]").click();
 
 
-=======
+
        // sepete ekelem
 //         driver.findElementByXPath("(//android.widget.TextView[@text='ADD TO CART'])[1]").click();
 //
@@ -74,7 +74,6 @@ public class ECommerce03SepeteEkle {
 
          Assert.assertEquals(ilkUrunAdi,"Air Jordan 4 Retro");
          Assert.assertEquals(ikinciUrunAdi,"Air Jordan 1 Mid SE");
->>>>>>> cfeaaeb95a0a5b59e7fda009b8721c9618c540c7
 
 
      }
